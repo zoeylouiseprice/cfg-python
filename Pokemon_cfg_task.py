@@ -34,7 +34,7 @@ def load():
     for i in range(min, max):
         url = 'https://pokeapi.co/api/v2/pokemon/{}/'.format(i)
         pokemon.append(requests.get(url).json())
-        print("loading: " + str(int(i/max*100))+"%")
+        print("loading: " + str(int((i-min)/(max-min)*100))+"%")
     print("Loaded!\n\n\n\n\n\n\n\n")
     return 1
 
@@ -170,7 +170,7 @@ def main(start):
     if len(mycards[0]) <1 :
         print ("you lost!")
         playagain()
-    elif len(mycards) > len(pokemon)-1:
+    elif len(mycards[0]) > len(pokemon)-1:
         print("you won all of the cards!")
         playagain()
     else:
@@ -183,7 +183,7 @@ def main(start):
         main(1)
 
 max = 300
-min = 151
+min = 150
 opponents = 0
 load()
 main(0)
